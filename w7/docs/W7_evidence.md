@@ -188,13 +188,15 @@ All resources tagged via Terraform `default_tags`:
 
 ### IAM Roles — Least Privilege
 
-| Role                           | Service     | Key Permissions                                                                                                                  |
-| ------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `dochub-lambda-exec-role-g5`   | Lambda      | `dynamodb:PutItem/GetItem/UpdateItem/Scan`, `s3:PutObject/GetObject`, `bedrock:StartIngestionJob`                                |
-| `dochub-ecs-task-role-g5`      | ECS Fargate | `bedrock:InvokeModel/RetrieveAndGenerate/Retrieve`, `s3:GetObject`                                                               |
-| `dochub-ai-bedrock-kb-role-g5` | Bedrock KB  | `bedrock:InvokeModel` (Titan V2 only), `s3:GetObject/ListBucket` (dochub-data only), `aoss:APIAccessAll` (OpenSearch collection) |
+| Role                           | Service     | Key Permissions                                                                                                                                                                                                                                                                                   |
+| ------------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dochub-lambda-exec-role-g5`   | Lambda      | `dynamodb:PutItem/GetItem/UpdateItem/DeleteItem/Scan/Query` (4 tables, ARN-scoped), `s3:PutObject/GetObject/DeleteObject` (dochub-data bucket only), `bedrock:StartIngestionJob/GetIngestionJob` (Resource `*` — AWS limitation, no ARN available), `cloudwatch:PutMetricData` (namespace-scoped) |
+| `dochub-ecs-task-role-g5`      | ECS Fargate | `bedrock:InvokeModel/RetrieveAndGenerate/Retrieve`, `s3:GetObject`                                                                                                                                                                                                                                |
+| `dochub-ai-bedrock-kb-role-g5` | Bedrock KB  | `bedrock:InvokeModel` (Titan V2 only), `s3:GetObject/ListBucket` (dochub-data only), `aoss:APIAccessAll` (OpenSearch collection)                                                                                                                                                                  |
 
-No wildcard `*` on action names for sensitive operations. Resource scope scoped to specific ARNs where possible.
+No wildcard `*` on **action names** for sensitive operations. Resource scope is scoped to specific ARNs where possible.
+
+> **Note — `bedrock:StartIngestionJob` uses `Resource: "*"`:** Bedrock Ingestion Jobs do not have addressable ARNs at policy-creation time — this is an AWS service limitation, not a design choice. All other sensitive resources (DynamoDB tables, S3 bucket) are scoped to specific ARNs.
 
 ![Lambda IAM role — named actions, no wildcards](screenshots/sec-01-lambda-iam-role.png)
 
@@ -221,11 +223,11 @@ No wildcard `*` on action names for sensitive operations. Resource scope scoped 
 
 ECS Fargate and Lambda functions publish logs to CloudWatch automatically:
 
-| Log Group                          | Source                 |
-| ---------------------------------- | ---------------------- |
-| `/ecs/dochub-ai-backend`           | ECS Fargate AI Backend |
-| `/aws/lambda/dochub-api-handler`   | Lambda API Handler     |
-| `/aws/lambda/dochub-event-handler` | Lambda Event Handler   |
+| Log Group                          | Source                 | Note                                    |
+| ---------------------------------- | ---------------------- | --------------------------------------- |
+| `dochub-g5-ai-backend-logs`        | ECS Fargate AI Backend | Terraform-managed, retention 7 days     |
+| `/aws/lambda/dochub-api-handler`   | Lambda API Handler     | Auto-created by AWS on first invocation |
+| `/aws/lambda/dochub-event-handler` | Lambda Event Handler   | Auto-created by AWS on first invocation |
 
 ![CloudWatch log groups](screenshots/cloudwatch_logs.png)
 
