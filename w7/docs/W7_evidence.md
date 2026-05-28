@@ -159,14 +159,6 @@ All resources tagged via Terraform `default_tags`:
 ![Billing Charges by Service Day 1](screenshots/cost_day1_eod.png)
 ![Billing Credits Applied Day 1](screenshots/cost_day1_eod2.png)
 
-**EOD (2026-05-29):**
-
-![Cost Explorer Day 2](screenshots/cost_day2_eod.png)
-
-**Friday Pre-demo (2026-05-30):**
-
-![Cost Explorer Friday](screenshots/cost_demo_morning.png)
-
 ### Top-3 Cost Drivers
 
 | Service               | Estimated Cost | Reason                                                                |
