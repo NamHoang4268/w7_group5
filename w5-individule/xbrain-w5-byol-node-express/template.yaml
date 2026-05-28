@@ -1,0 +1,73 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: BYOL challenge — Node.js Express on Lambda (your job to fill in the gaps)
+
+# ── Your tasks ─────────────────────────────────────────────────────────
+# 1. app.js + server.js work locally (`npm install && npm start`). Confirm.
+# 2. Decide HOW to put this on Lambda. Options to consider:
+#       a) serverless-http               — add one entrypoint file, ~3 lines
+#       b) @vendia/serverless-express    — fork of (a), same shape
+#       c) AWS Lambda Web Adapter        — Lambda Layer, zero JS changes,
+#                                          set Layers + Environment.AWS_LWA_PORT
+#       d) Roll your own using awslambda.streamifyResponse
+# 3. Fill in the `# TODO:` markers below.
+# 4. `sam build && sam deploy --guided` (region must be `us-west-2`).
+# ────────────────────────────────────────────────────────────────────────
+
+Globals:
+  Function:
+    Timeout: 10
+    MemorySize: 512
+    Runtime: nodejs22.x
+    Architectures:
+      - arm64
+
+Resources:
+  ExpressFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: byol-node-express
+      CodeUri: ./
+      # TODO: which file exports a Lambda handler? Format: "<file-without-ext>.<exported-name>"
+      #   serverless-http  → typically "lambda.handler" (you create lambda.js)
+      #   Web Adapter      → "run.sh" (set executable bit) with Layers + AWS_LWA_PORT=3000
+      Handler: lambda.handler
+      Tracing: Active
+      # TODO (Web Adapter route only): uncomment + pick the Layer ARN for your region+arch.
+      # Public ARNs: https://github.com/awslabs/aws-lambda-web-adapter/releases
+      # Layers:
+      #   - arn:aws:lambda:us-west-2:753240598075:layer:LambdaAdapterLayerArm64:25
+      # Environment:
+      #   Variables:
+      #     AWS_LWA_PORT: '3000'
+      #     PORT: '3000'
+      Events:
+        ApiCatchAll:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref ExpressHttpApi
+            Path: /{proxy+}
+            Method: ANY
+            PayloadFormatVersion: '2.0'
+        ApiRoot:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref ExpressHttpApi
+            Path: /
+            Method: ANY
+            PayloadFormatVersion: '2.0'
+
+  ExpressHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: $default
+
+  ExpressLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${ExpressFunction}
+      RetentionInDays: 7
+
+Outputs:
+  ApiUrl:
+    Value: !Sub https://${ExpressHttpApi}.execute-api.${AWS::Region}.amazonaws.com

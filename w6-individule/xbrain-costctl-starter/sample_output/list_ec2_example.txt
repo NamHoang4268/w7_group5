@@ -1,0 +1,10 @@
+$ ./costctl.py list ec2
+EC2 (no filter) — 2 found:
+------------------------------------------------------------------------------
+  i-023c1874ba6747d79            t3.nano         running         Owner=dangnhatminh09032002@gmail.com, CostCenter=G5, Name=geekbrain-nat-ec2, Environment=dev, Project=geekbrain, keep=true, Application=geekbrain
+  i-0f81702e1719d3f70            t3.micro        running         Name=Demo EC2 Install
+
+$ ./costctl.py list ec2 --tag Environment=dev
+EC2 Environment=dev — 1 found:
+------------------------------------------------------------------------------
+  i-023c1874ba6747d79            t3.nano         running         Owner=dangnhatminh09032002@gmail.com, CostCenter=G5, Name=geekbrain-nat-ec2, Environment=dev, Project=geekbrain, keep=true, Application=geekbrain

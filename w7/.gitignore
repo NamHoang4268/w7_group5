@@ -1,0 +1,28 @@
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+terraform/tfplan
+terraform/*.zip
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Python
+ai-backend/__pycache__/
+ai-backend/**/__pycache__/
+ai-backend/*.pyc
+ai-backend/.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+*.swp
+
+# Secrets
+*.pem

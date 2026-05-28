@@ -1,0 +1,5 @@
+$ ./costctl.py list s3
+S3 (no filter) — 2 found:
+------------------------------------------------------------------------------
+  geekbrain-frontend-dev         bucket          active          Project=geekbrain, Environment=dev, Owner=dangnhatminh09032002@gmail.com, CostCenter=G5, Application=geekbrain, Name=geekbrain-frontend
+  geekbrain-kb-dev               bucket          active          Project=geekbrain, Environment=dev, Owner=dangnhatminh09032002@gmail.com, CostCenter=G5, Application=geekbrain, Name=geekbrain-kb

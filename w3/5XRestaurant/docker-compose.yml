@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: eatease-mongodb-local
+    ports:
+      - "27017:27017"
+    volumes:
+      - eatease_mongodb_data:/data/db
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=eatease
+
+volumes:
+  eatease_mongodb_data:

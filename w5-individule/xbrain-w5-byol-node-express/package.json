@@ -1,0 +1,13 @@
+{
+  "name": "byol-node-express",
+  "version": "1.0.0",
+  "description": "BYOL challenge — existing Express app. Your job: make it run on Lambda.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "serverless-http": "^3.2.0"
+  }
+}

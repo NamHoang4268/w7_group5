@@ -1,0 +1,5 @@
+$ ./costctl.py list volume
+VOLUME (no filter) — 2 found:
+------------------------------------------------------------------------------
+  vol-0436e65bd256faf90          gp3-8GB         in-use
+  vol-0a176de068b26097c          gp3-8GB         in-use

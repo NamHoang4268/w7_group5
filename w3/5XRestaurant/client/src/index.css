@@ -1,0 +1,407 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-gradient {
+    animation: gradient 8s linear infinite;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-active: var(--active);
+    --color-text: var(--text);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+    :root {
+        /* Warm beige/cream background inspired by hotel design */
+        --background: 40 30% 96%; /* Soft cream background */
+        --base-color: 30 15% 25%; /* Warm dark brown for text */
+        --highlight: 25 60% 50%; /* Warm brown accent */
+        --highlight-2: 40 40% 95%; /* Light cream highlight */
+        --foreground: 30 20% 20%; /* Dark warm text */
+        --active: 35 25% 90%; /* Warm beige active state */
+
+        /* Card colors - warm cream tones */
+        --card: 40 35% 98%; /* Very light cream for cards */
+        --card-foreground: 30 20% 20%;
+
+        /* RGB values for glassmorphism */
+        --card-rgb: 252, 250, 248;
+        --border-rgb: 210, 180, 140;
+
+        /* Popover */
+        --popover: 40 35% 98%;
+        --popover-foreground: 30 20% 20%;
+
+        /* Primary - warm brown */
+        --primary: 25 45% 35%; /* Rich brown */
+        --primary-foreground: 40 30% 98%;
+
+        /* Secondary - light beige */
+        --secondary: 35 30% 92%; /* Light warm beige */
+        --secondary-foreground: 25 45% 25%;
+
+        /* Muted - soft beige */
+        --muted: 35 25% 90%;
+        --muted-foreground: 30 15% 45%;
+
+        /* Accent - warm tan */
+        --accent: 30 35% 88%;
+        --accent-foreground: 25 45% 25%;
+
+        /* Destructive - warm red */
+        --destructive: 0 70% 55%;
+        --destructive-foreground: 40 30% 98%;
+
+        /* Border - warm beige border */
+        --border: 35 20% 80%;
+        --input: 35 25% 88%;
+        --ring: 25 45% 35%;
+
+        /* Charts - warm earth tones */
+        --chart-1: 25 60% 50%; /* Warm brown */
+        --chart-2: 35 50% 60%; /* Tan */
+        --chart-3: 15 45% 55%; /* Terracotta */
+        --chart-4: 45 55% 65%; /* Golden beige */
+        --chart-5: 30 50% 70%; /* Light brown */
+        --radius: 0.5rem;
+
+        /* Ether colors - warm palette */
+        --ether-1: #d4a574; /* Warm tan */
+        --ether-2: #c9b299; /* Beige */
+        --ether-3: #e8d5c4; /* Light cream */
+    }
+
+    .dark {
+        /* Darker warm brown background - more "dark" feeling */
+        --background: 30 15% 5%; /* Much darker brown */
+        --base-color: 40 20% 95%; /* Light cream text */
+        --highlight: 35 50% 45%; /* Muted warm gold */
+        --highlight-2: 30 40% 35%; /* Darker brown highlight */
+
+        --foreground: 40 15% 88%; /* Slightly muted light text */
+        --active: 30 12% 12%; /* Very dark active */
+
+        /* Card colors - darker warm tones */
+        --card: 30 15% 7%; /* Very dark brown card */
+        --card-foreground: 40 15% 88%;
+
+        /* RGB values for glassmorphism */
+        --card-rgb: 20, 18, 16;
+        --border-rgb: 60, 55, 50;
+
+        /* Popover */
+        --popover: 30 15% 7%;
+        --popover-foreground: 40 12% 70%;
+
+        /* Primary - subtle warm light */
+        --primary: 40 20% 85%; /* Muted cream */
+        --primary-foreground: 30 20% 10%;
+
+        /* Secondary - dark brown */
+        --secondary: 30 15% 15%; /* Dark brown */
+        --secondary-foreground: 40 20% 85%;
+
+        /* Muted - very dark brown */
+        --muted: 30 15% 12%;
+        --muted-foreground: 35 10% 55%;
+
+        /* Accent - dark warm brown */
+        --accent: 35 18% 18%;
+        --accent-foreground: 40 20% 85%;
+
+        /* Destructive - muted warm red */
+        --destructive: 0 50% 40%;
+        --destructive-foreground: 40 20% 90%;
+
+        /* Border - dark brown border */
+        --border: 30 12% 22%;
+        --input: 30 12% 15%;
+        --ring: 35 18% 18%;
+
+        /* Charts - darker warm earth tones */
+        --chart-1: 30 45% 42%; /* Dark warm brown */
+        --chart-2: 40 40% 48%; /* Muted golden tan */
+        --chart-3: 20 40% 38%; /* Dark terracotta */
+        --chart-4: 45 50% 52%; /* Muted amber */
+        --chart-5: 35 38% 42%; /* Dark bronze */
+
+        /* Ether colors - darker warm palette */
+        --ether-1: #6b5744; /* Very dark tan */
+        --ether-2: #7a6b5d; /* Dark taupe */
+        --ether-3: #8b7d6b; /* Medium brown */
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    @apply scroll-smooth;
+    font-family: 'Bahnschrift', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Prevent body shift when Sheet/Dialog opens */
+body[data-scroll-locked] {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Ensure Sheet overlay is truly fixed and doesn't affect layout */
+[data-radix-dialog-overlay],
+[data-slot="sheet-overlay"] {
+    position: fixed !important;
+}
+
+[data-radix-dialog-content],
+[data-slot="sheet-content"] {
+    position: fixed !important;
+}
+
+.text-gradient {
+    background: linear-gradient(
+        120deg,
+        #78350f 0%,
+        #b45309 20%,
+        #fbbf24 40%,
+        #fffbeb 60%,
+        #ffd6a5 80%,
+        #ffead0 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-sunrise {
+    background: linear-gradient(
+        100deg,
+        #78350f 0%,
+        #b45309 25%,
+        #fbbf24 50%,
+        #ffead0 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-soft {
+    background: linear-gradient(
+        120deg,
+        #fff7ed 0%,
+        #ffead0 40%,
+        #ffd6a5 70%,
+        #fffbeb 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+}
+
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Input */
+/* input[type='date']::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+input[type='datetime-local']::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+} */
+
+/* Styles */
+.liquid-glass-header {
+    backdrop-filter: blur(20px) saturate(200%);
+    background: rgba(255, 248, 240, 0.5); /* Warm cream with transparency */
+    border: 1px solid rgba(210, 180, 140, 0.3);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08),
+        inset 0 1px rgba(255, 255, 255, 0.4);
+}
+
+.dark .liquid-glass-header {
+    background: rgba(30, 20, 15, 0.5); /* Dark warm brown instead of blue */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3),
+        inset 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.liquid-glass-menu {
+    backdrop-filter: blur(50px) saturate(180%);
+    background: rgba(250, 245, 235, 0.85); /* Light warm cream */
+    border: 1px solid rgba(210, 180, 140, 0.25);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06),
+        inset 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.dark .liquid-glass-menu {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.liquid-glass {
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(245, 235, 220, 0.7); /* Warm beige glass */
+    border: 1px solid rgba(210, 180, 140, 0.35);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
+        inset 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.dark .liquid-glass {
+    background: rgba(60, 60, 60, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.liquid-glass-2 {
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    background: rgba(240, 230, 215, 0.75); /* Warm cream glass */
+    border: 1px solid rgba(210, 180, 140, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08),
+        inset 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.dark .liquid-glass-2 {
+    background: rgba(32, 32, 32, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.glass-border {
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(248, 240, 230, 0.65); /* Subtle warm glass */
+    border: 1px solid rgba(210, 180, 140, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06),
+        inset 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.dark .glass-border {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.animate-scroll-right {
+    animation: 45s linear infinite scroll-right;
+}
+
+.animate-scroll-left {
+    animation: 45s linear infinite scroll-left;
+}
+
+.no-spinner {
+    -moz-appearance: textfield;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE, Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.scrollbarCustom::-webkit-scrollbar {
+    width: 10px;
+    height: 12px;
+    @apply bg-slate-200;
+}
+
+.scrollbarCustom::-webkit-scrollbar-thumb {
+    @apply bg-rose-200 rounded-full;
+}

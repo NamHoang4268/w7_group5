@@ -1,0 +1,4 @@
+$ ./costctl.py list ec2 --missing-tag Application
+EC2 missing:Application — 1 found:
+------------------------------------------------------------------------------
+  i-0f81702e1719d3f70            t3.micro        running         Name=Demo EC2 Install

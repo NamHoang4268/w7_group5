@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"kiroAgent.configureMCP": "Disabled",
+		"html.autoClosingTags": false,
+		"javascript.autoClosingTags": false
+	}
+}

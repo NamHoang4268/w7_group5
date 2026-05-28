@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+aws-scripts-production
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# manual changes
+client/node_modules
+server/node_modules
+client/.vite_cache
+.env
+.client/.env
+.server/.env
+.server/tests
+chat-history.md
+AGENT_RULES.md
+.kiro/
+
+DEPLOY.md

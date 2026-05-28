@@ -1,0 +1,167 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+test_results.json
+
+# Logs
+logs/
+*.log
+
+# Process IDs
+.pids
+*.pid
+
+# Database
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform.lock.hcl
+
+# AWS
+.aws/
+
+# Environment variables
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Node modules (if any)
+node_modules/
+
+# Build artifacts
+*.pyc
+*.pyo
+
+# Cache
+.cache/
+*.cache
+
+# Lambda deployment packages
+lambda/*.zip
+backend/lambda/*.zip
+lambda/package/
+backend/lambda/package/
+
+# Vite cache (for frontend)
+.vite_cache/
+
+# Documentation build
+docs/_build/
+doc/_build/
+site/
+
+
+# ============================================================
+# Terraform
+# ============================================================
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+*.tfvars
+*.auto.tfvars
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
+
+# ============================================================
+# Node.js (Backend + Frontend)
+# ============================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============================================================
+# Build Artifacts
+# ============================================================
+backend.zip
+frontend/dist/
+
+# ============================================================
+# IDE & OS
+# ============================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ============================================================
+# Environment & Secrets
+# ============================================================
+.env
+.env.local
+.env.*.local
+*.pem
+venv
+
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# ============================================================
+# Testing
+# ============================================================
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
