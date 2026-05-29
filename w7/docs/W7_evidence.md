@@ -6,7 +6,7 @@
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | Group               | GROUP 5 — XBrain                                                                                                                          |
 | Members             | Minh - Quang Vinh - Hoang - Nam - Quyen - Thuy - Son                                                                                      |
-| Repository          | https://github.com/me-dangnhatminh/xbrain-dangnhatminh                                                                                    |
+| Repository          | https://github.com/Heaven229-c/Hackathon_Xbrain/blob/main/docs/W7_evidence.md                                                             |
 | Prior Week Evidence | [W6 Evidence](../w6/docs/W6_evidence.md)                                                                                                  |
 | Date                | 2026-05-28                                                                                                                                |
 | Application         | DocHub AI — Multi-tenant AI Document Hub                                                                                                  |
