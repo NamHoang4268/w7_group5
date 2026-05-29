@@ -154,10 +154,15 @@ All resources tagged via Terraform `default_tags`:
 
 > **Note:** AWS Cost Explorer has a 24-48 hour data lag — same-day costs show as $0.00. Screenshots below use **AWS Billing → Bills → Charges by service** (real-time MTD data) which reflects actual charges without the lag.
 
-**EOD (2026-05-28) — AWS Billing Charges by Service:**
+**EOD Day 1 (2026-05-28) — AWS Billing Charges by Service:**
 
 ![Billing Charges by Service Day 1](screenshots/cost_day1_eod.png)
 ![Billing Credits Applied Day 1](screenshots/cost_day1_eod2.png)
+
+**EOD Pre-Demo (2026-05-29) — AWS Billing Charges by Service:**
+
+![Billing Charges by Service Pre-Demo](screenshots/cost_predemo_eod.png)
+![Billing Credits Applied Pre-Demo](screenshots/cost_predemo2_eod.png)
 
 ### Top-3 Cost Drivers
 
